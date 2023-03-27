@@ -11,8 +11,12 @@
             "id": "1d87b6e14af5f3c5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Data Structures/Hash Table.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Data Structures/Hash Table.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Data Structures/Hash Table.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Data Structures/Hash Table.md"
+              }
             }
           },
           {
@@ -146,7 +154,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "710be7f9061216ea",
+  "active": "1d87b6e14af5f3c5",
   "lastOpenFiles": [
     "Algorithms/Searching.md",
     "Algorithms/Two Pointers.md",

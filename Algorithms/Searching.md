@@ -1,7 +1,7 @@
 
-### Linear Search
+# Linear Search
 
-##### How Linear Search Works?
+## How Linear Search Works?
 
 The following steps are followed to search for an element `k = 1` in the list below.
 
@@ -27,14 +27,14 @@ def linearSearch(array, n, x):
     return -1
 ```
 
-##### Complexity
+## Complexity
 - **Time complexity:** O(n)
 
 ---
 
-### Binary Search
+# Binary Search
 
-##### How Binary Search Works?
+## How Binary Search Works?
 
 ![Initial array](binary-search-initial-array.webp)
 ![Setting pointers](binary-search-set-pointers.webp)
@@ -65,7 +65,7 @@ def binarySearch(array, x, low, high):
     return -1
 ```
 
-##### Complexity
+## Complexity
 -   **Best case complexity**: `O(1)`
 -   **Average case complexity**: `O(log n)`
 -   **Worst case complexity**: `O(log n)`

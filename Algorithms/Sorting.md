@@ -1,5 +1,5 @@
 
-### Selection Sort
+# Selection Sort
 
 ```Python
 # Selection sort in python
@@ -30,7 +30,7 @@ def selectionSort(array, size):
 
 ---
 
-### Insertion Sort
+# Insertion Sort
 
 ```Python
 # Insertion sort in python
@@ -62,7 +62,7 @@ def insertionSort(array):
 
 ---
 
-### Merge Sort
+# Merge Sort
 
 ![Merge Sort example](merge-sort-example_0.png)
 
@@ -118,7 +118,7 @@ def mergeSort(array):
 
 ---
 
-### Quicksort
+# Quicksort
 
 Quicksort is [a sorting algorithm](https://www.programiz.com/dsa/sorting-algorithm) based on the **divide and conquer approach** where
 
@@ -184,7 +184,7 @@ def quickSort(array, low, high):
 
 ---
 
-### Heap Sort
+# Heap Sort
 
 ![Max Heap and Min Heap](max-heap-min-heap.png)
 

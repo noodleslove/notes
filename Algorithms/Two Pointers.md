@@ -1,10 +1,10 @@
 
-## Tortoise and Hare
+# Tortoise and Hare
 
 > The idea behind the algorithm is that, if you have two pointers in a linked list, one moving twice as fast (the hare) than the other (the tortoise), then if they intersect, there is a cycle in the linked list. If they don't intersect, then there is no cycle.
 
 
-### Code
+## Code
 
 ```Python
 def hasCycle(head: Optional[Node]) -> bool:
@@ -25,7 +25,7 @@ def hasCycle(head: Optional[Node]) -> bool:
 ```
 
 
-### Showing How This Works
+## Showing How This Works
 
 To help illustrate this algorithm, I'll use some very relevant clipart. We'll start with the linked list. The `tortoise` begins at the `head`, while the `hare` begins at `head.next`.
 
@@ -42,6 +42,6 @@ The while loop is still true. Again, `tortoise` and `hare` are not equal to each
 The while loop is still true, but this time, `tortoise` and `hare` are equal to each other. This means that a cycle was found, so we will return true.
 
 
-### Extras
+## Extras
 
 When there exists a cycle, start a pointer `temp` and the start the linked list. Move both `tortoise` and `temp` over one at a time. When both pointers meet, there is the start of the cycle.

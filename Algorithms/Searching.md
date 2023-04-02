@@ -5,13 +5,13 @@
 
 The following steps are followed to search for an element `k = 1` in the list below.
 
-![./Algorithms/Attachments/Array to be searched for](linear-search-initial-array.webp)
+![Array to be searched for](Attachments/linear-search-initial-array.webp)
 1. Start from the first element, compare `k` with each element `x`.
 
-![./Algorithms/Attachments/Compare with each element](linear-search-comparisons.webp)
+![Compare with each element](Attachments/linear-search-comparisons.webp)
 2. If `x == k`, return the index.
 
-![Algorithms/Attachments/Element found](linear-search-found.webp)
+![Element found](Attachments/linear-search-found.webp)
 3.  Else, return `not found`.
 
 ```Python
@@ -36,11 +36,11 @@ def linearSearch(array, n, x):
 
 ## How Binary Search Works?
 
-![Algorithms/Attachments/Initial array](binary-search-initial-array.webp)
-![Setting pointers](binary-search-set-pointers.webp)
-![Algorithms/Attachments/Finding mid element](binary-search-mid.webp)
-![Algorithms/Attachments/Mid element](binary-search-find-mid.webp)
-![Algorithms/Attachments/Found](binary-search-mid-again.webp)
+![Initial array](Attachments/binary-search-initial-array.webp)
+![Setting pointers](Attachments/binary-search-set-pointers.webp)
+![Finding mid element](Attachments/binary-search-mid.webp)
+![Mid element](Attachments/binary-search-find-mid.webp)
+![Found](Attachments/binary-search-mid-again.webp)
 
 ```Python
 # Binary Search in python

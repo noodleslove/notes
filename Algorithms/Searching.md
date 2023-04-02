@@ -5,10 +5,10 @@
 
 The following steps are followed to search for an element `k = 1` in the list below.
 
-![Algorithms/Attachments/Array to be searched for](linear-search-initial-array.webp)
+![./Algorithms/Attachments/Array to be searched for](linear-search-initial-array.webp)
 1. Start from the first element, compare `k` with each element `x`.
 
-![Algorithms/Attachments/Compare with each element](linear-search-comparisons.webp)
+![./Algorithms/Attachments/Compare with each element](linear-search-comparisons.webp)
 2. If `x == k`, return the index.
 
 ![Algorithms/Attachments/Element found](linear-search-found.webp)

@@ -29,15 +29,15 @@ def hasCycle(head: Optional[Node]) -> bool:
 
 To help illustrate this algorithm, I'll use some very relevant clipart. We'll start with the linked list. The `tortoise` begins at the `head`, while the `hare` begins at `head.next`.
 
-![Example 0](tortoise-and-hare-example_0.png)
+![Algorithms/Attachments/Example 0](tortoise-and-hare-example_0.png)
 
 Since `hare` and `hare.next` are both not `null`, we'll enter the while loop. `tortoise` and `hare` are not equal to each other, so we will move them both over. `tortoise` gets moved over one spot, and `hare` gets moved over two spots.
 
-![Example 0](tortoise-and-hare-example_1.png)
+![Algorithms/Attachments/Example 0](tortoise-and-hare-example_1.png)
 
 The while loop is still true. Again, `tortoise` and `hare` are not equal to each other. We'll move the `tortoise` over one, and the `hare` over two nodes.
 
-![Example 0](tortoise-and-hare-example_2.png)
+![Algorithms/Attachments/Example 0](tortoise-and-hare-example_2.png)
 
 The while loop is still true, but this time, `tortoise` and `hare` are equal to each other. This means that a cycle was found, so we will return true.
 

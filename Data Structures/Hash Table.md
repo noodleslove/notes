@@ -5,7 +5,7 @@ In chaining, if a hash function produces the same index for multiple elements, t
 
 If `j` is the slot for multiple elements, it contains a pointer to the head of the list of elements. If no element is present, `j` contains `NIL`.
 
-![Collision Resolution using chaining](Hash-3_1.webp)
+![Data\ Strutures/Attachments/Collision Resolution using chaining](Hash-3_1.webp)
 
 
 ## 2. Open Addressing

@@ -64,7 +64,7 @@ def insertionSort(array):
 
 # Merge Sort
 
-![Merge Sort example](merge-sort-example_0.png)
+![Algorithms/Attachments/Merge Sort example](merge-sort-example_0.png)
 
 ```Python
 # MergeSort in Python
@@ -186,7 +186,7 @@ def quickSort(array, low, high):
 
 # Heap Sort
 
-![Max Heap and Min Heap](max-heap-min-heap.png)
+![Algorithms/Attachments/Max Heap and Min Heap](max-heap-min-heap.png)
 
 ```Python
 # Heap Sort in python

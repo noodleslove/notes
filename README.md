@@ -29,7 +29,7 @@
 <!-- PROJECT INFO -->
 <br />
 <div align="center">
-  <h3 align="center">My Notes</h3>
+  <h2 align="center">My Notes</h2>
 
   <p align="center">
     A repository for my notes regarding algorithms and ML models.

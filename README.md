@@ -56,10 +56,13 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#topics">Topics</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#python">Python</a></li>
+        <li><a href="#data-visualization">Data Visualization</a></li>
+        <li><a href="#machine-learning">Machine Learning</a></li>
+        <li><a href="#database">Database</a></li>
+        <li><a href="#big-data">Big Data</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>

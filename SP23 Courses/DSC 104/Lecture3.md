@@ -15,3 +15,22 @@ We should try to ensure that
 - limited by ability of the master to process updates
 - masters are selected manually or automartically
 	- user-defined vs. electe by the cluster manager
+
+### Peer-to-peer Repilcation
+
+- no master, all the replicas are equal
+- every node can handle a write and then spreads the update to others
+- problem: consistency
+	- users can write simultaneously at two different nodes
+- solution:
+	- when writing, the replicas coordinate to avoid conflict
+		- at the cost of networ traffic
+		- the write operation waits till the coordination process is finished
+	- not all replicas need to agree on the write, just a majority
+
+
+## Sharding & Replication
+
+- sharding and master-slave replication:
+	- each data shard is replicated (via a single master)
+	- a node can be a master for some data and a s

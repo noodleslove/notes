@@ -53,3 +53,13 @@ We should try to ensure that
 	- is violated if one user writes and reads on different replicas
 	- solution: sticky session (session affinity)
 		- requests for a particular session to the smae physical machine that serviced the first request for that session
+
+### Quorums
+
+- peer-to-peer replication with replication factor $N$
+	- number of replicas of each data objeect
+- read quorum: R
+	- number of peers contacted for a single read
+		- assuming that each value has a timestamp (time of write) to tell the older value from the newer
+	- for a strong read consistency: $R + W > N$
+		- reader surely does not read stale data

@@ -1,3 +1,6 @@
+📕 Lecture #3
+===
+
 
 ## Distribution Models: Sharding
 
@@ -33,4 +36,20 @@ We should try to ensure that
 
 - sharding and master-slave replication:
 	- each data shard is replicated (via a single master)
-	- a node can be a master for some data and a s
+	- a node can be a master for some data and a slave for other data
+- sharding and peer-to-peer replication
+	- a common strategy for column-family databases
+		- a typical default is replication factor of 3
+			- each shard is present on 3 nodes
+
+### Replication Consistency
+
+- consistency among replicas
+	- ensuring that the same data item has the same value when reading from different replicas
+	- after some time, the write propagates everywhere
+- **eventual consistency**, meanwhile: stale data
+	- various levels of consistency
+	- read-your-writes (session consistency)
+	- is violated if one user writes and reads on different replicas
+	- solution: sticky session (session affinity)
+		- requests for a particular session to the smae physical machine that serviced the first request for that session

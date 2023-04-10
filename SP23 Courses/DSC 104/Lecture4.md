@@ -68,6 +68,14 @@
 - it must exhibit high performance and availability
 	- faster than creating two-column table in DBMS
 
-# What can be put into a KV-Store?
+## What can be put into a KV-Store?
 - simplest case
-	- a look-up table (e.g. country-name, cap)
+	- a look-up table (e.g. country-name, capital-city)
+- more practically
+	- both keys and values can be complex compound objects and sometime list, maps or other data structures
+
+## Relational to KV-Store Mapping
+- a key is a fully-qualified descriptor of a value
+	- table name
+	- column name
+	- row id / primary key

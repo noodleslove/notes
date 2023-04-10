@@ -1,3 +1,5 @@
+📕 Lecture #4
+===
 
 # The CAP Theorem (2000)
 - consisency:
@@ -54,3 +56,18 @@
 - in practice
 	- a number of these proporties can be combined
 	- monotoic reads and read-your-writes are most desired
+
+
+# Key-Value Store
+- a key-value store can be viewed as a simple hash table
+	- where all the accesses to the database are via primary keys
+- a client can either:
+	- get the value for a key
+	- put a value for a key
+	- delete a key from the data store
+- it must exhibit high performance and availability
+	- faster than creating two-column table in DBMS
+
+# What can be put into a KV-Store?
+- simplest case
+	- a look-up table (e.g. country-name, cap)

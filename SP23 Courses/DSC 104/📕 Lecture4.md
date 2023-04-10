@@ -26,3 +26,24 @@
 - eventual consistency
 	- specific form of weak consistency
 	- it is guaranteed that if no new updates are made to object, eventually all accesses will return the last updated value (e.g., progagate updates to replicas in a lazy fashion)
+
+## BASE Systems
+- as opposed to ACID
+	- basically available, soft-state, eventually consistent
+- basically available
+	- the system is mostly "not down"
+- soft-state
+	- the situation taht information (state) the user put into the system that will go away if the user doesn't maintain it
+		- the information will expire unless it is refreshed
+		- in "hard-state" systems the user has to explicityly change state
+	- another interpretation
+		- the system may change state without active user input for eventual consistency
+
+## Eventual Consistency Variations
+- causal consistency
+	- processes that have causal relationship will see consistent data
+- read-your-write consistency
+	- a process always accesses the data item after it's udate operation and never sees an older value
+- session consistency
+	- as long as session exists, system guarantees read-your-write consistency
+	- guarantees do not overlap sessions

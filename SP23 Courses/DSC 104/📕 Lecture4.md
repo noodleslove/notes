@@ -47,3 +47,10 @@
 - session consistency
 	- as long as session exists, system guarantees read-your-write consistency
 	- guarantees do not overlap sessions
+- monotonic read consistency
+	- if a process has seen a particular value of data item, any subsequent processes will never return any previous values
+- monotonic write consistency
+	- the system guarantees to serialize the writes by the same process
+- in practice
+	- a number of these proporties can be combined
+	- monotoic reads and read-your-writes are most desired

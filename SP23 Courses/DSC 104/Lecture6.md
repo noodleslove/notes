@@ -53,9 +53,9 @@ advantages of compression in general:
 - accessing many of the columns in a table at once doesn't save much 
 	- it could be more expensive than a row store
 ```sql
-select * %%%%
+select *                        %%all columns%%
 from long_wide_table
-where order_line_id=321837291;
+where order_line_id=321837291;  %%single row%%
 ```
 - generally not ideal for tables with few columns
 - update and deleting rows is expensive
@@ -68,3 +68,9 @@ where order_line_id=321837291;
 ## Data Compression – Bit-Vector Encoding
 
 ## Data Compression – Dictionary Encoding
+
+## Data Compression – Frame of Reference Encoding
+- the nature of data don't fluctuate much
+- measure a frame of reference, then measure the difference afterwards
+
+## Data Compression – Differential Encoding

@@ -29,4 +29,15 @@
 	- compression
 		- compress values per column
 	- late tuple materialization
-		- 
+		- construct tuples as late as possible
+	- block iteration
+		- pass blocks of values between operators
+	- invisible join
+
+## Why Compression?
+advantages of compression in general:
+- lower storage space requirements
+- better I/O performance
+	- read fewer data (from disk, SSD, or RAM) gain from cache locality
+- better query processing perfromance
+	- typically when operating directly on compressed data

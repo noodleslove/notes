@@ -41,3 +41,30 @@ advantages of compression in general:
 	- read fewer data (from disk, SSD, or RAM) gain from cache locality
 - better query processing perfromance
 	- typically when operating directly on compressed data
+
+## Data Can be Compressed
+- some segments will compress more than others
+- encoding/decoding
+
+## Query Processing
+- column elimination
+
+## Downside
+- accessing many of the columns in a table at once doesn't save much 
+	- it could be more expensive than a row store
+```sql
+select * %%%%
+from long_wide_table
+where order_line_id=321837291;
+```
+- generally not ideal for tables with few columns
+- update and deleting rows is expensive
+	- some column stores are append only
+	- others strongly discourage writes
+	- some closed sourc column stores split storage into row and column areas
+
+## Data Compression – Run-Length Encoding
+
+## Data Compression – Bit-Vector Encoding
+
+## Data Compression – Dictionary Encoding

@@ -28,3 +28,12 @@
 	- which exists when operating on a single column
 - leverage optimizations for fixed-width attributes
 	- which would not be possible if operating on the tuple level one variable-width attribute becomes variable-width
+
+## Block Iteration
+> pipeline paralleling: process tuples one by one with parallelism. 
+- row store
+	- pass single tuples between operators
+	- extract attribute value through function calls
+- column store
+	- pass blocks of values between operators
+	- no need for attribute extraction

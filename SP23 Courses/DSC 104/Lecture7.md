@@ -37,3 +37,10 @@
 - column store
 	- pass blocks of values between operators
 	- no need for attribute extraction
+
+## Hybrid Stores
+- for many opeartions, late materialization-based joins are significantly faster than early materialization-based joins
+- in some column-stores (e.g., HP Vertica)
+	- a row-store AND a column-store are maintained
+	- tuples are migrated from one to the other as needed
+	- ingestion is slower but retrieval is very fast

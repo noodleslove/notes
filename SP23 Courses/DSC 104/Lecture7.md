@@ -44,3 +44,8 @@
 	- a row-store AND a column-store are maintained
 	- tuples are migrated from one to the other as needed
 	- ingestion is slower but retrieval is very fast
+
+## The Parquet Columnar File Format
+- apache parquet is a columnar storage format available to any project in the hadoop ecosystem, regardless of the choice of data processing framework, data or programming language
+	- parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces
+	- used in Spark, AWS Athena, PresoDB, Azure Data Lake, and Amazon Redshift Spectrum

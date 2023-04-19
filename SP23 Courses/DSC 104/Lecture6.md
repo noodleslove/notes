@@ -74,3 +74,6 @@ where order_line_id=321837291;  %%single row%%
 - measure a frame of reference, then measure the difference afterwards
 
 ## Data Compression – Differential Encoding
+- similar to frame of reference encoding
+- multiple fix points
+

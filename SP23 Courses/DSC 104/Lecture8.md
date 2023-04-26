@@ -36,3 +36,8 @@
 		- initialization: place and fix one of the columns of AA in CA
 		- iteration: place the remaining n-i columns in the remaining i+1 positions in the CA matrix. for each column, choose the placement that makes **the most contribution to the global affinity measure**.
 		- row order: order rows according to the column ordering
+
+
+Ensure the ethical use of web scraping: It's essential to ensure that you're not violating any legal or ethical issues when collecting data from websites. Always check the terms and conditions of the websites to see if they allow web scraping. If not, try to obtain the data through an API or seek permission from the website's owner.
+
+Consider the limitations of the data. Consider the limitations of the data and acknowledge any biases or confounding variables that may affect your results.

@@ -18,4 +18,7 @@
 - probability of false positive
 	- $p = \text{pow}(1 - \text{exp}(-k / (m / n)), k)$
 - number of bits
-	- $m = \text{ceil}((n * \text{log}(p)) / l*$
+	- $m = \text{ceil}((n * \text{log}(p)) / \text{log}(1 / \text{pow}(2, \text{log}(2))))$
+- number of hash functions
+	- $k = \text{round}((m / n) * \text{log}(2))$
+

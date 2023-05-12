@@ -10,5 +10,3 @@
 		- accessed for processing queries on either key (or both)
 
 ## Indexing Text
-- ```db.reviews.createIndex({subject: "text", comments: "text"
-						    ```

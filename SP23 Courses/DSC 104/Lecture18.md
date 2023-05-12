@@ -8,4 +8,7 @@
 - compound indices
 	- `db.products.createIndex({"category": 1, "item": 1})`
 		- accessed for processing queries on either key (or both)
-	- 
+
+## Indexing Text
+- ```db.reviews.createIndex({subject: "text", comments: "text"
+						    ```

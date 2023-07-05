@@ -14,3 +14,7 @@ July 4 Check-in (Eddie)
 2. Run a few tests and fix bugs if necessary
 3. So far so good
 
+July 5 Check-in (Eddie)
+1. Completed and pushed eventCreate route
+2. Move on to eventDelete route
+3. So far so good

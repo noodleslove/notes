@@ -18,3 +18,8 @@ July 5 Check-in (Eddie)
 1. Completed and pushed eventCreate route
 2. Move on to eventDelete route
 3. So far so good
+
+July 6 Check-in (Eddie)
+1. Completed eventDelete & eventUpdate routes
+2. Double check, then submit a pull request
+3. So far so good

@@ -176,7 +176,75 @@ Request Body Example:
 
 ```json
 {
-	message: "Successful"
+	  "title": "Updated Event Title",
+	  "status": "updated",
+	  "start_time": "2023-05-20T11:00:00",
+	  "end_time": "2023-05-20T15:00:00",
+	  "location": "Updated Event Location",
+	  "description": "Updated Event Description",
+	  "calendar_link": "https://example.com/updated-calendar",
+	  "instagram_link": "https://www.instagram.com/updated-event"
 }
 ```
 
+Response Format: JSON
+
+Response Example:
+
+```json
+{
+	"message": "Successful"
+}
+```
+
+```json
+{
+    "message": "Event not found"
+}
+```
+
+```json
+{
+    "message": "Failed",
+    "errors": [
+        {
+            "type": "field",
+            "value": "Upcoming",
+            "msg": "Status must be either upcoming or past.",
+            "path": "status",
+            "location": "body"
+        }
+    ]
+}
+```
+
+
+## eventDelete
+
+API Endpoint: `/api/v1/event/:id/delete`
+
+Description: Delete an event.
+
+Method: DELETE
+
+Parameters:
+
+- `id` (required): The ID of the event to delete.
+
+Request URL Example: `http://127.0.0.1:5000/api/v1/event/123/delete`
+
+Request Method: DELETE
+
+Response Format: JSON
+
+Response Example:
+
+```json
+
+```
+
+```json
+{
+    "message": "Event not found"
+}
+```

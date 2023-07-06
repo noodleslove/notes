@@ -98,7 +98,7 @@ Parameters:
 - `calendar_link`: The calendar link for the event (optional).
 - `instagram_link`: The Instagram link for the event (optional).
 
-Request URL Example: `http://127.0.0.1:5000/api/v1/event/creat`
+Request URL Example: `http://127.0.0.1:5000/api/v1/event/create`
 
 Request Method: POST
 

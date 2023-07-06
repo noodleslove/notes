@@ -90,10 +90,10 @@ Parameters:
 - `status`: The status of the event.
 - `start_time`: The start time of the event.
 - `end_time`: The end time of the event.
-- `location`: (optional) The location of the event.
-- `description`: (optional) The description of the event.
-- `calendar_link`: (optional) The calendar link for the event.
-- `instagram_link`: (optional) The Instagram link for the event.
+- `location`: The location of the event (optional).
+- `description`: The description of the event (optional).
+- `calendar_link`: The calendar link for the event (optional).
+- `instagram_link`: The Instagram link for the event (optional).
 
 Request URL Example: `http://127.0.0.1:5000/api/v1/event/creat`
 
@@ -146,3 +146,37 @@ Response Examples:
     ]
 }
 ```
+
+
+## eventUpdate
+
+API Endpoint: `/api/v1/event/:id/update`
+
+Description: Update an existing event.
+
+Method: PUT
+
+Parameters:
+
+- `id` (required): The ID of the event to update.
+- `title`: The updated title of the event (optional).
+- `status`: The updated status of the event (optional).
+- `start_time`: The updated start time of the event (optional).
+- `end_time`: The updated end time of the event (optional).
+- `location`: The updated location of the event (optional).
+- `description`: The updated description of the event (optional).
+- `calendar_link`: The updated calendar link for the event (optional).
+- `instagram_link`: The updated Instagram link for the event (optional).
+
+Request URL Example: `http://127.0.0.1:5000/api/v1/event/123/update`
+
+Request Method: PUT
+
+Request Body Example:
+
+```json
+{
+	message: "Successful"
+}
+```
+

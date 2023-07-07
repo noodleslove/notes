@@ -179,14 +179,14 @@ Request Body Example:
 
 ```json
 {
-	  "title": "Updated Event Title",
-	  "status": "updated",
-	  "start_time": "2023-05-20T11:00:00",
-	  "end_time": "2023-05-20T15:00:00",
-	  "location": "Updated Event Location",
-	  "description": "Updated Event Description",
-	  "calendar_link": "https://example.com/updated-calendar",
-	  "instagram_link": "https://www.instagram.com/updated-event"
+	"title": "Updated Event Title",
+	"status": "updated",
+	"start_time": "2023-05-20T11:00:00",
+	"end_time": "2023-05-20T15:00:00",
+	"location": "Updated Event Location",
+	"description": "Updated Event Description",
+	"calendar_link": "https://example.com/updated-calendar",
+	"instagram_link": "https://www.instagram.com/updated-event"
 }
 ```
 

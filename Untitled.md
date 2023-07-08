@@ -1,5 +1,5 @@
 
-id
+cid
 userId
 date
 meal

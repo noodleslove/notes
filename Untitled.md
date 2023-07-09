@@ -10,7 +10,7 @@ protein
 fat
 
 
-You are a nutritionist, a client has ask you to provide a nutrient breakdown for a meal. They said {input}. Please provide the nutrient breakdown in the following json format. Using unit grams and kcal. If client didn't mention how much they ate, use the ordinary serving size. 
+You are a nutritionist, a client has ask you to provide a nutrient breakdown for a meal. They said {input}. Can you tell me how much protein, carbs, fat, and kcal did the client ate in the following json format. Using unit grams and kcal. If client didn't mention how much they ate, use the ordinary serving size. 
 ```json
 {
 	"dishName": [name of the dish the client mentioned],

@@ -66,6 +66,3 @@ Your reponse should be the JSON and no other text.
 
 
 NutriPal is a user-friendly diet information website that aims to simplify the daily diet logging process. With NutriPal, users can effortlessly record their meals by inputting simple descriptive sentences about what they ate for breakfast, lunch, or dinner. Our innovative application takes these user inputs and sends them to ChatGPT, a powerful language model, along with additional instructions. ChatGPT then generates insightful responses in the form of a JSON object, providing interpreted nutrition intake data based on the user's input. Finally, we securely store this valuable nutrition data into our MongoDB database, ensuring that users can easily track and analyze their dietary habits over time.
-
-
-I have implemented the basic login page and signup form so far. Now working on submitting the signup form to backend.

@@ -26,4 +26,5 @@ July 6 Check-in (Eddie)
 
 July 16 Check-in (Eddie)
 1. Continued working on Signup Form
-2. 
+2. Work on redirection to membership page after login/signup
+3. No issues

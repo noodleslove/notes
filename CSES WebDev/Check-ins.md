@@ -23,3 +23,7 @@ July 6 Check-in (Eddie)
 1. Completed eventDelete & eventUpdate routes
 2. Double check, then submit a pull request
 3. So far so good
+
+July 16 Check-in (Eddie)
+1. Continued working on Signup Form
+2. 

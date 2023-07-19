@@ -28,3 +28,8 @@ July 16 Check-in (Eddie)
 1. Continued working on Signup Form
 2. Work on redirection to membership page after login/signup
 3. No issues
+
+July 18 Check-in (Eddie)
+1. Researched on CORS Policy
+2. Solve CORS Policy blocking issue when calling backend API
+3. When calling `/user/create` API on backend, it throws an error on `XMLHttpRequest has been blocked by CORS policy: Response to preflight request doesn't pass access control check`

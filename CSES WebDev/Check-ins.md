@@ -32,4 +32,4 @@ July 16 Check-in (Eddie)
 July 18 Check-in (Eddie)
 1. Researched on CORS Policy
 2. Solve CORS Policy blocking issue when calling backend API
-3. When calling `/user/create` API on backend, it throws an error on `XMLHttpRequest has been blocked by CORS policy: Response to preflight request doesn't pass access control check`
+3. Encountered an error when attempting to call the `/user/create` API on the backend, resulting in the message: `XMLHttpRequest has been blocked by CORS policy: Response to preflight request doesn't pass access control check.`

@@ -33,3 +33,8 @@ July 18 Check-in (Eddie)
 1. Researched on CORS Policy
 2. Solve CORS Policy blocking issue when calling backend API
 3. Encountered an error when attempting to call the `/user/create` API on the backend, resulting in the message: `XMLHttpRequest has been blocked by CORS policy: Response to preflight request doesn't pass access control check.`
+
+July 20 Check-in (Eddie)
+1. Created AuthContext and store access token to local storage
+2. Work on getUser API to check if an user is new
+3. No issues

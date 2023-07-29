@@ -43,3 +43,8 @@ July 27 Check-in (Eddie)
 1. Created user API routes & refined user schema
 2. Implement API handlers
 3. No issues
+
+July 28 Check-in (Eddie)
+1. Finished userUpdate & userDelete routes
+2. Research on frontend styling for membership page
+3. No issues

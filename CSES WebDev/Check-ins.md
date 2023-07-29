@@ -38,3 +38,8 @@ July 20 Check-in (Eddie)
 1. Created AuthContext and store access token to local storage
 2. Work on getUser API to check if an user is new
 3. No issues
+
+July 27 Check-in (Eddie)
+1. Created user API routes & refined user schema
+2. Implement API handlers
+3. No issues

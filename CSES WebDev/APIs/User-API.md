@@ -1,132 +1,170 @@
-## User APIs
----
+## User API Documentation
 
-**1. Check if a User Exists**
+This API provides endpoints for managing user data. It allows you to check if a user exists, create new users, retrieve user information, update user details, and delete users.
 
-Endpoint: `/api/v1/users/check`
-Method: POST
-Description: Check if a user with the given email exists in the database.
-
-Request Body:
-```json
-{
-  "email": "user@example.com"
-}
-```
-
-Response:
-```json
-{
-  "exists": true,
-  "user": {
-    "_id": "user_id",
-    "name": "John Doe",
-    "email": "user@example.com",
-    "major": "Computer Science",
-    "expectedGraduationYear": 2024,
-    "points": 100,
-    "eventsAttended": ["event_id1", "event_id2"],
-    "profilePicture": "base64_encoded_image"
+**1. Check if User Exists**
+- **Endpoint:** `POST /api/v1/users/check`
+- **Description:** Checks if a user with a specific email exists in the database.
+- **Request Body:**
+  ```json
+  {
+    "email": "user@example.com"
   }
-}
-```
-
----
+  ```
+- **Response:**
+  - `200 OK` - User exists
+    ```json
+    {
+      "exists": true,
+      "user": { /* user data */ }
+    }
+    ```
+  - `200 OK` - User does not exist
+    ```json
+    {
+      "exists": false
+    }
+    ```
+  - `400 Bad Request` - Invalid request body or missing email
+    ```json
+    {
+      "message": "Failed",
+      "errors": [ /* Array of validation errors */ ]
+    }
+    ```
+  - `500 Internal Server Error` - Internal server error
 
 **2. Create a New User**
-
-Endpoint: `/api/v1/users/create`
-Method: POST
-Description: Create a new user in the database.
-
-Request Body:
-```json
-{
-  "name": "John Doe",
-  "email": "user@example.com",
-  "major": "Computer Science",
-  "expectedGraduationYear": 2024
-}
-```
-
-Response:
-```json
-{
-  "_id": "user_id",
-  "name": "John Doe",
-  "email": "user@example.com",
-  "major": "Computer Science",
-  "expectedGraduationYear": 2024,
-  "points": 0,
-  "eventsAttended": [],
-  "profilePicture": null
-}
-```
-
----
+- **Endpoint:** `POST /api/v1/users/create`
+- **Description:** Creates a new user with the provided details.
+- **Request Body:**
+  ```json
+  {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "major": "Computer Science",
+    "expectedGraduationYear": 2025
+  }
+  ```
+- **Response:**
+  - `201 Created` - User created successfully
+    ```json
+    {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "major": "Computer Science",
+      "expectedGraduationYear": 2025,
+      "points": 0,
+      "eventsAttended": [],
+      "profilePicture": null
+    }
+    ```
+  - `409 Conflict` - User with the same email already exists
+    ```json
+    {
+      "message": "Email already exists"
+    }
+    ```
+  - `500 Internal Server Error` - Internal server error
 
 **3. Get User Information**
+- **Endpoint:** `GET /api/v1/users/:email`
+- **Description:** Retrieves information about a specific user using their email.
+- **Response:**
+  - `200 OK` - User found
+    ```json
+    {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "major": "Computer Science",
+      "expectedGraduationYear": 2025,
+      "points": 50,
+      "eventsAttended": [ /* Array of event IDs user attended */ ],
+      "profilePicture": "https://example.com/profile.jpg"
+    }
+    ```
+  - `404 Not Found` - User not found
+    ```json
+    {
+      "message": "User not found"
+    }
+    ```
+  - `500 Internal Server Error` - Internal server error
 
-Endpoint: `/api/v1/users/:email`
-Method: GET
-Description: Get information about a specific user based on their email.
-
-Response:
-```json
-{
-  "_id": "user_id",
-  "name": "John Doe",
-  "email": "user@example.com",
-  "major": "Computer Science",
-  "expectedGraduationYear": 2024,
-  "points": 100,
-  "eventsAttended": ["event_id1", "event_id2"],
-  "profilePicture": "base64_encoded_image"
-}
-```
-
----
-
-**4. Update User Information**
-
-Endpoint: `/api/v1/users/:email`
-Method: PUT
-Description: Update information for a specific user based on their email.
-
-Request Body (example to update the name and major):
-```json
-{
-  "name": "Jane Doe",
-  "major": "Electrical Engineering"
-}
-```
-
-Response:
-```json
-{
-  "message": "Successful"
-}
-```
-
----
+**4. Update User Details**
+- **Endpoint:** `PUT /api/v1/users/:email`
+- **Description:** Updates details of a specific user using their email.
+- **Request Body:** (Optional, provide only the fields to be updated)
+  ```json
+  {
+    "name": "John Updated",
+    "major": "Computer Science (Updated)",
+    "expectedGraduationYear": 2026
+  }
+  ```
+- **Response:**
+  - `200 OK` - User updated successfully
+    ```json
+    {
+      "message": "Successful"
+    }
+    ```
+  - `400 Bad Request` - Invalid request body or email
+    ```json
+    {
+      "message": "Failed",
+      "errors": [ /* Array of validation errors */ ]
+    }
+    ```
+  - `404 Not Found` - User not found
+    ```json
+    {
+      "message": "User not found"
+    }
+    ```
+  - `500 Internal Server Error` - Internal server error
 
 **5. Delete User**
+- **Endpoint:** `DELETE /api/v1/users/:email`
+- **Description:** Deletes a specific user using their email.
+- **Response:**
+  - `200 OK` - User deleted successfully
+    ```json
+    {
+      "message": "Successful"
+    }
+    ```
+  - `400 Bad Request` - Invalid email
+    ```json
+    {
+      "message": "Failed",
+      "errors": [ /* Array of validation errors */ ]
+    }
+    ```
+  - `404 Not Found` - User not found
+    ```json
+    {
+      "message": "User not found"
+    }
+    ```
+  - `500 Internal Server Error` - Internal server error
 
-Endpoint: `/api/v1/users/:email`
-Method: DELETE
-Description: Delete a user based on their email.
+**Note:** The `User` model is defined with the following schema:
 
-Response:
-```json
-{
-  "message": "Successful"
-}
+```javascript
+const userSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  major: { type: String, required: true },
+  expectedGraduationYear: { type: Number, required: true },
+  points: { type: Number, default: 0 },
+  eventsAttended: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+    }],
+    default: [],
+  },
+  profilePicture: { type: String },
+});
 ```
-
----
-
-Please note that for updating and deleting a user, you need to pass the user's email as a URL parameter. The APIs use the HTTP status codes to indicate the success or failure of each operation.
-
-Additionally, you can handle file uploads for the profile picture by sending the image data in base64 format in the request body when creating or updating a user. In the response, the profile picture is also provided in base64 encoded format.
-
-Ensure that you implement proper error handling and authentication mechanisms in your actual server-side code to protect sensitive user data and handle different edge cases.

@@ -48,3 +48,8 @@ July 28 Check-in (Eddie)
 1. Finished userUpdate & userDelete routes
 2. Research on frontend styling for membership page
 3. No issues
+
+August 1 Check-in (Eddie)
+1. Made pull request
+2. Start working on Events Attended component
+3. No issues

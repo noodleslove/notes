@@ -53,3 +53,8 @@ August 1 Check-in (Eddie)
 1. Made pull request
 2. Start working on Events Attended component
 3. No issues
+
+August 3 Check-in (Eddie)
+1. Roughly completed EventsAttended component
+2. Start working on LeaderBoard component
+3. No issues

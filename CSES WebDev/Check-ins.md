@@ -58,3 +58,8 @@ August 3 Check-in (Eddie)
 1. Roughly completed EventsAttended component
 2. Start working on LeaderBoard component
 3. No issues
+
+September 8 Check-in (Eddie)
+1. Took a few days off
+2. Test out prize redemption API
+3. No issues

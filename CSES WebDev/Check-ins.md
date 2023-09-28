@@ -63,3 +63,8 @@ September 8 Check-in (Eddie)
 1. Took a few days off
 2. Test out prize redemption API
 3. No issues
+
+September 23 Check-in (Eddie)
+1. Added logging feature when redeem API is called
+2. Make PR
+3. No issues

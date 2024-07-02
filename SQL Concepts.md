@@ -554,6 +554,13 @@ ADD CONSTRAINT fk_name FOREIGN KEY (fk_key_column)
    REFERENCES table_2(pk_key_column)
 ```
 
+### CHECK constraint
+
+```sql
+ALTER TABLE Employee
+ADD CONSTRAINT Chk_Age_Employee CHECK (Age BETWEEN 18 AND 60);
+```
+
 ### Inserting data![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
 
 #### [INSERT INTO … VALUES](https://www.cockroachlabs.com/docs/stable/insert)
@@ -683,6 +690,15 @@ Delete a view
 ```sql
 DROP VIEW view_name;
 ```
+
+## Temp Table
+
+ special type of table to help us store the data temproraily; lifescope is limited to the connection that created the local temp table
+
+### Local Temp Table
+
+
+
 
 ## Transactions in SQL
 

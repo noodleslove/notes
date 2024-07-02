@@ -194,6 +194,35 @@ NATURAL JOIN country;
 - `min(expr)` − minimum value within the group
 - `sum(expr)` − sum of values within the group
 
+#### TOP PREDICATE
+
+Select certain number or certain percentage of records retrieve top 5 most expensive products.
+```sql
+SELECT TOP 5 ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC;
+```
+
+Retrieve top 10 percent most expensive products
+```sql
+SELECT TOP 10 PERCENT ProductName, UnitPrice
+FROM Products
+ORDER BY UnitPrice DESC;
+```
+
+List top 5 customers who created the most total revenue.
+```sql
+SELECT
+	TOP 5 c.CustomerId,
+	c.ContactName,
+	SUM(od.UnitPrice * od.Quantity) As SumRevenue
+FROM Customers c
+	JOIN Orders o ON c.CustomerId = o.CustomerId
+	JOIN [Order Details] od ON o.OrderId = od.OrderId
+GROUP BY c.CustomerId, c.ContactName
+ORDER BY SumRevenue DESC;
+```
+
 ### SUBQUERIES
 
 A subquery is a query that is nested inside another query, or inside another subquery. There are different types of subqueries.
@@ -278,21 +307,11 @@ FROM skating
 WHERE country = 'DE';
 ```
 
-#### UNION
+#### Differences
 
-**`UNION`** combines the results of two result sets and removes duplicates. **`UNION ALL`** doesn't remove duplicate rows.
-
-This query displays German cyclists together with German skaters:
-
-```sql
-SELECT name
-FROM cycling
-WHERE country = 'DE'
-UNION / UNION ALL
-SELECT name
-FROM skating
-WHERE country = 'DE';
-```
+1. Union will remove duplicate values but union all will not
+2. If you use union, the records from the first column will be sorted ascendingly automatically.
+3. Union can not be used in recursive cte but union all can.
 
 ### Managing SQL constraints![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
 
@@ -547,3 +566,15 @@ This statement saves all changes made during the current transaction.
 ```sql
 ROLLBACK;
 ```
+
+## SQL Execution Order
+
+**`SELECT`** fields, aggregate(fields)
+**`FROM`** table **`JOIN`** table2 **`ON`** ...
+**`WHERE`** criteri  --- optional
+**`GROUP BY`** fields  --- use when we have both aggregated and non aggregated fields
+**`HAVING`** criteria  --optional
+**`ORDER BY`** by fields **`DESC`**  -- optional
+
+FROM/JOIN ---> WHERE ---> GROUP BY ---> HAVING ---> SELECT ---> DISTINCT ---> ORDER BY
+

@@ -313,7 +313,6 @@ WHERE country = 'DE';
 2. If you use **`UNION`**, the records from the first column will be sorted ascendingly automatically.
 3. **`UNION`** can not be used in recursive CTE but **`UNION ALL`** can.
 
-
 ### Window Function
 
 Window function operated on a set of rows and returns a single aggregated value for each and every row by adding an extra column.
@@ -395,20 +394,65 @@ FROM Customers c
 GROUP BY c.ContactName, c.Country;
 ```
 
-find top 3 customers from every country with maximum orders
-
-  
-
-SELECT dt.ContactName, dt.Country, dt.NumOfOrders, dt.RNK
-
-FROM (SELECT c.ContactName, c.Country, COUNT(O.OrderId) AS NumofOrders, RANK() OVER(PARTITION BY c.Country ORDER BY COUNT(O.OrderId) DESC) RNK
-
-FROM Customers c JOIN Orders o On c.CustomerId = o.CustomerId
-
-GROUP BY c.ContactName, c.Country) dt
-
+Find top 3 customers from every country with maximum orders
+```sql
+SELECT
+	dt.ContactName,
+	dt.Country,
+	dt.NumOfOrders,
+	dt.RNK
+FROM (
+	SELECT
+		c.ContactName,
+		c.Country,
+		COUNT(O.OrderId) AS NumofOrders,
+		RANK() OVER (
+			PARTITION BY c.Country
+			ORDER BY COUNT(O.OrderId) DESC
+		) RNK
+	FROM Customers c
+		JOIN Orders o On c.CustomerId = o.CustomerId
+	GROUP BY c.ContactName, c.Country
+) dt
 WHERE dt.RNK <=3
+```
 
+### Common Table Expression (CTE)
+
+A temporary name result set to make our query more readable.
+
+```sql
+WITH OrderCntCTE AS (
+	SELECT
+		CustomerId,
+		Count(OrderId) As TotalNumOfOrders
+	FROM Orders
+	GROUP BY CustomerId
+)
+SELECT
+	c.ContactName,
+	c.City,
+	c.Country,
+	cte.TotalNumOfOrders
+FROM Customers c LEFT
+	JOIN OrderCntCTE cte ON c.CustomerId = cte.CustomerID;
+```
+
+**Lifecycle**: it has to be used to used in the next select statement right away; have to be created and used in a single batch.
+
+**Recursive CTE**: if we have a CTE that calls itself recursively, that is called recursive CTE. The true power of CTE is that it can call itself recursively
+```sql
+WITH EmpHierarchyCTE AS (
+	SELECT EmployeeId, FirstName, ReportsTo, 1 level
+	FROM Employees
+	WHERE ReportsTo is null
+	UNION ALL
+	SELECT e.EmployeeId, e.FirstName, e.ReportsTo, cte.level + 1
+	FROM Employees e
+		INNER JOIN EmpHierarchyCTE cte ON e.ReportsTo = cte.EmployeeId
+)
+SELECT * FROM EmpHierarchyCTE;
+```
 
 ### Managing SQL constraints![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
 
@@ -675,3 +719,9 @@ ROLLBACK;
 
 FROM/JOIN ---> WHERE ---> GROUP BY ---> HAVING ---> SELECT ---> DISTINCT ---> ORDER BY
 
+### `TRUNCATE` vs. `DELETE`
+
+1. `DELETE` is a DML. So it will not reset the property value. `TRUNCATE` is DDL so it will reset the property value
+2. `DELETE` can be used with `WHERE` clause but `TRUNCATE` can not be
+
+### DROP: is a DDL statement that will delete the wholw table.

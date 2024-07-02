@@ -221,3 +221,208 @@ namespace ExtensionMethods
 2. **Camel Casing:** The first word is all lowercase, and subsequent words follow Pascal casing. Used for naming variables, objects, etc.
    - Example: `camelCaseExample`.
 
+# C# Advanced Topics
+
+## Reasons Object Type is Not Suitable for Passing Parameters
+1. **Lack of Type Safety:** Using the `object` type does not provide compile-time type checking, which can lead to runtime errors.
+2. **Unwanted Boxing:** Passing value types as objects causes boxing, which can degrade performance.
+
+## Generics
+- **Definition:** Generics allow us to define classes and methods while deferring the specification of types until the classes or methods are declared or called.
+
+### Use Cases of Generics
+- **Interfaces:** Used to include all common behaviors.
+
+## Interfaces
+1. **Definition:** A collection of methods that are by default abstract and public, to be implemented by derived classes.
+2. **Multiple Implementations:** One class can implement multiple interfaces.
+3. **Instantiation:** Interfaces cannot be instantiated.
+4. **Loose Coupling:** Interfaces help in writing loosely coupled code.
+
+### Abstract Class vs. Interface (Abstraction)
+1. **Abstract Class:** Provides a base class to its subclasses and is a wise choice when we have a class hierarchy. It can contain both abstract and non-abstract methods.
+2. **Interface:** Defines common functionalities and behaviors that can be implemented by any class. All methods are public and abstract by default.
+3. **Inheritance:**
+   - A class can inherit only one abstract or concrete class.
+   - A class can implement multiple interfaces.
+
+### Example:
+```csharp
+public interface IRepository {
+    void Create();
+    List<T> GetAll();
+    T GetById(int id);
+    void Update(T entity);
+    void Delete(int id);
+}
+
+public interface ICustomerRepository {
+    Customer GetCustomerByEmail(string email);
+    List<Customer> GetCustomerByCity(string city);
+}
+
+public interface IProductRepository {
+    Product GetProductByCategory(string category);
+}
+
+public class CustomerRepository : IRepository, ICustomerRepository {
+    // Implementation of methods
+}
+
+public class ProductRepository : IRepository, IProductRepository {
+    // Implementation of methods
+}
+```
+
+## SOLID Principles
+
+### Single Responsibility Principle (SRP)
+- A class should have only one reason to change; it should be responsible for only one thing.
+
+### Open/Closed Principle (OCP)
+- Software entities like classes, modules, functions, etc., should be open for extension but closed for modification.
+- **Implementation:** Use extension methods or inheritance.
+
+### Liskov Substitution Principle (LSP)
+- Derived classes should be substitutable for their base types.
+
+### Interface Segregation Principle (ISP)
+- Clients should not be forced to depend on interfaces they do not use.
+- **Implementation:**
+```csharp
+public interface IRepository {
+    void Create();
+    List<T> GetAll();
+    T GetById(int id);
+    void Update(T entity);
+    void Delete(int id);
+}
+
+public interface ICustomerRepository {
+    Customer GetCustomerByEmail(string email);
+}
+
+public interface IProductRepository {
+    Product GetProductByCategory(string category);
+}
+```
+
+### Dependency Inversion Principle (DIP)
+- High-level modules should not depend on low-level modules; instead, both should depend on abstractions.
+- **Implementation:** Use dependency injection to achieve loosely coupled code.
+
+## Collections
+
+### Generic vs. Non-Generic Collections
+1. **Non-Generic Collection:** Takes the `object` type, allowing a collection to contain different types of elements (both value and reference types). This can lead to unwanted boxing.
+2. **Generic Collection:** Specifies the type, providing type safety and better performance.
+
+### Advantages of Generic Collections
+1. **Type Safety:** Compile-time type checking prevents runtime errors.
+2. **Better Performance:** Avoids boxing/unboxing overhead.
+3. **Flexibility:** Can define collections of any type.
+4. **Maintainability:** Easier to read and maintain type-specific code.
+
+### Example:
+```csharp
+List<int> numbers = new List<int>(); // Generic collection
+numbers.Add(1);
+numbers.Add(2);
+
+ArrayList numbers = new ArrayList(); // Non-generic collection
+numbers.Add(1);
+numbers.Add("two"); // Lack of type safety
+```
+
+## Delegates
+
+- **Definition:** A delegate is a type-safe function pointer that takes a function or method as a parameter. Delegates are reference types.
+
+### Built-in Delegates
+
+1. **Action:** Takes a function with generic input but returns void.
+2. **Predicate:** Takes a function with generic input and returns a boolean value.
+3. **Func:** Takes a function with generic input and returns a generic output.
+
+### Example:
+
+csharp
+
+Copy code
+
+`Action<string> print = Console.WriteLine; Predicate<int> isPositive = x => x > 0; Func<int, int, int> add = (a, b) => a + b;`
+
+## Anonymous Methods and Types
+
+- **Anonymous Method:** A method without a name, allowing creation of methods on the fly.
+- **Anonymous Type:** Encapsulates a set of read-only properties into a single object without explicitly defining a type, created using the `new` keyword. They are reference types.
+
+### Example:
+```csharp
+var anonymousType = new { Name = "John", Age = 30 }; Console.WriteLine(anonymousType.Name);
+```
+
+## `var` Keyword
+
+- Used to declare a variable without assigning an explicit type.
+
+### Example:
+```csharp
+var number = 10; // Implicitly typed as int
+var name = "John";// Implicitly typed as string
+```
+
+## Exception Handling
+
+- **Definition:** Runtime errors that can be caught using `try`, `catch`, and `finally` blocks.
+
+### System.Exception Class Hierarchy
+
+- **SystemException Class:**
+    - **OutOfMemoryException**
+    - **StackOverflowException**
+    - **ArgumentException:**
+        - **ArgumentNullException**
+        - **ArgumentOutOfRangeException**
+    - **ArithmeticException:**
+        - **DivideByZeroException**
+        - **OverflowException**
+
+### Custom Exception Class
+
+- Custom exception classes inherit from the `System.Exception` base class.
+
+### Example:
+```csharp
+public class CustomException : Exception
+{
+	public CustomException(string message) : base(message)
+	{
+		
+	}
+}
+```
+
+## Finally Block
+
+- Ensures execution regardless of an exception being thrown or not.
+
+### Use Cases:
+
+1. **Call `Dispose()` Method:** To clean up unmanaged resources from the unmanaged heap.
+2. **Rollback Transactions:** Ensure database transactions are properly handled.
+
+### Example:
+```csharp
+try {
+    // Start a transaction
+    // Commit transaction
+} catch (Exception ex) {
+    // Handle exception
+} finally {
+    if (transaction != null) {
+        // Rollback transaction
+    }
+}
+```
+

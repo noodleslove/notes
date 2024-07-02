@@ -1,3 +1,27 @@
+### Creating and managing databases![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
+
+#### [CREATE DATABASE](https://www.cockroachlabs.com/docs/stable/create-database)
+
+Creates a new database.
+
+```sql
+CREATE DATABASE bank;
+```
+
+#### [DROP DATABASE](https://www.cockroachlabs.com/docs/stable/drop-database)
+
+Delete a database and all of its contents.
+
+```sql
+DROP DATABASE bank;
+```
+
+#### [SHOW DATABASES](https://www.cockroachlabs.com/docs/stable/show-databases)*
+
+Show all databases in your cluster.
+
+```SHOW DATABASES;`**``
+
 ### ALIASES
 
 #### COLUMNS
@@ -305,12 +329,85 @@ Insert rows with specified values into a table.
 
 ```sql
 INSERT INTO users (name, city)
-VALUES('Alice', 'New York');
+VALUES ('Alice', 'New York');
 ```
 #### [INSERT INTO … SELECT](https://www.cockroachlabs.com/docs/stable/insert#insert-from-a-select-statement)
 
 Insert rows into a table from the results of a query.
 
 ```sql
-INSERT INTO drivers (id, city, name, address) SELECT id, city, name, address FROM users WHERE name IN ('Anita Atkinson', 'Devin Jordan');
+INSERT INTO drivers (id, city, name, address)
+SELECT id, city, name, address
+FROM users
+WHERE name IN ('Anita Atkinson', 'Devin Jordan');
+```
+
+## Working with your data![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
+
+### Modifying data![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
+
+#### [UPDATE](https://www.cockroachlabs.com/docs/stable/update)
+
+Update row(s) in a table.
+
+```sql
+UPDATE users
+SET address = '201 E Randolph St'
+WHERE id = '851eb851-eb85-4000-8000-00000000001a';
+```
+
+Note: without a `WHERE` statement, `UPDATE` will update the value of the specified column or columns for **all rows**.
+
+#### [INSERT INTO … ON CONFLICT](https://www.cockroachlabs.com/docs/stable/update-data#use-insert-on-conflict)
+
+Insert a new row, or perform a different action if a conflict with an existing row is detected (i.e., an “upsert”).
+
+```sql
+INSERT INTO employees (id, name, email)
+VALUES (2, ‘Dennis’, ‘dennisp@weyland.corp’)
+ON CONFLICT (id) DO UPDATE;
+```
+
+#### [UPSERT](https://www.cockroachlabs.com/docs/stable/upsert)*
+
+Upsert a row into the database.
+
+```sql
+UPSERT INTO employees (id, name, email)
+VALUES (6, ‘Lambert’, ‘lambert@weyland.corp`);
+```
+
+#### [DELETE FROM](https://www.cockroachlabs.com/docs/stable/delete)
+
+Delete a specific row or rows.
+
+```sql
+DELETE FROM promo_codes
+WHERE code = 'HAPPY50';
+```
+
+## Managing indexes![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
+
+#### [CREATE INDEX](https://www.cockroachlabs.com/docs/stable/create-index)
+
+Create an index for a table using one or more columns.
+
+```sql
+CREATE INDEX ON table1 (column1, column2);
+```
+#### [ALTER INDEX … RENAME TO](https://www.cockroachlabs.com/docs/stable/alter-index#rename-to)
+
+Rename an index.
+
+```sql
+ALTER INDEX usersname_idx
+RENAME TO users_name_idx;
+```
+``
+#### [DROP INDEX](https://www.cockroachlabs.com/docs/stable/drop-index)
+
+Remove an index.
+
+```sql
+DROP INDEX users_name_idx;
 ```

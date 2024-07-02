@@ -708,6 +708,30 @@ This statement saves all changes made during the current transaction.
 ROLLBACK;
 ```
 
+There 3 modes of transaction:
+- Autocommit transaction
+- Implicit transaction
+- Explicit transaction: you have to explicitly specify the starting and ending points of the transaction
+
+## ACID Properties
+
+1. Atomicity: work most be atomic
+2. Consistency: a database is transformed from one consistent state to another consistent state
+3. Isolation: two transactions will be isolated from each other by locking the resource
+4. Durability: once the transaction is completed, the changes that we make to database will be permanent
+
+## Concurrency Problem
+
+1. **Dirty read**: if transaction 1 allows transaction 2 to read the uncommited data but transaction 1 rolls back. happens when isolation level is read uncommitted and is solved by updating isolation level to read committed
+
+2. **Lost update**: when tran1 and tran2 are trying to read and update the same data but tran2 finished its work earlier even though tran1 started the transaction first and as a result the update from tran2 will be missing. 
+   
+   It happens when isolation level is read committed and is solved by updating the isolation level to repeatable read
+
+3. **Non repeatable read**: happens when t1 reads the same data twice but t2 is updating the data; happens when isolation level is read commited and is solved by updating the isolation level to repeatable read
+
+4. **Phantom read**: happens when t1 read the same data twice while t2 is inserting the data; happens when isolation level is set to repeatable read and is solved by updating the isolation level to serializable
+
 ## SQL Execution Order
 
 **`SELECT`** fields, aggregate(fields)
@@ -724,4 +748,16 @@ FROM/JOIN ---> WHERE ---> GROUP BY ---> HAVING ---> SELECT ---> DISTINCT ---> OR
 1. `DELETE` is a DML. So it will not reset the property value. `TRUNCATE` is DDL so it will reset the property value
 2. `DELETE` can be used with `WHERE` clause but `TRUNCATE` can not be
 
-### DROP: is a DDL statement that will delete the wholw table.
+### DROP 
+
+`DROP` is a DDL statement that will delete the whole table.
+
+### PERFORMANCE TUNING
+
+1. You need to look at the execution plan; sql profiler
+2. create an index wisely.
+3. avoid unnecessary joins.
+4. Avoid using select *
+5. use a derived table to avoid grouping of lots of non-aggreagted fields.
+
+--6. replace subquery with join if needed.

@@ -108,3 +108,101 @@
    - Both are pass-by-reference and will change the actual value of the variable.
 
 This structured markdown format provides a clear overview of the C# types and concepts, with corrections and proper organization.
+
+# C# OOP Concepts and Advanced Topics
+
+## Encapsulation
+- **Definition:** Hides the data implementation and provides flexibility.
+  
+## Constructor
+
+1. **Definition:** A special method that has the same name as the class and does not have any return type, not even `void`.
+2. **Purpose:** Used to create an object of the class and initialize class members.
+3. **Default Constructor:** If no constructor is defined in the class, the C# compiler provides a default parameterless constructor.
+4. **Overloading:** Constructors can be overloaded, meaning they can have the same name but different parameters.
+5. **Inheritance:** Constructors cannot be inherited or overridden.
+6. **Base Class Call:** By default, a derived class constructor will call the base class constructor.
+
+## Inheritance
+
+- **Definition:** Allows one class to inherit from another existing class so that the derived class can reuse, extend, and modify the code from the base class.
+- **Note:** C# supports single inheritance.
+
+### Example: Employee Management System
+- **Full-time Employee:** Biweekly pay, benefits.
+- **Part-time Employee:** Hourly pay.
+- **Common Attributes:** id, name, phone, email, address; perform work.
+
+## Abstract Class
+
+- **Definition:** Cannot create an instance of this class; can contain both abstract and concrete methods.
+- **Method Overriding:** To override a method in the derived class, the base class method must be abstract or virtual.
+
+## Sealed Class
+
+- **Definition:** A class that cannot have any child classes.
+
+## Polymorphism
+
+1. **Method Overriding:** Occurs between the base class and derived class with the same method signature (including access modifier, method name, and parameters) but different implementations.
+2. **Method Overloading:** Occurs in the same class with the same method name and access modifiers but different input/output parameters.
+
+## Static
+
+- **Static Members:** Belong to the class itself instead of any instance.
+- **Static Class:** All members should be static.
+
+### Static Class vs Sealed Class
+
+1. **Inheritance:**
+   - Both cannot be inherited.
+2. **Instance Creation:**
+   - Cannot create an instance of a static class.
+   - Can create an instance of a sealed class.
+3. **Methods:**
+   - Sealed class can contain both static and non-static methods.
+   - Static class can contain only static methods.
+
+### Abstract Class vs Static Class
+
+1. **Instance Creation:**
+   - Both cannot be instantiated.
+2. **Inheritance:**
+   - Abstract class should be inherited.
+   - Static class cannot be inherited.
+3. **Methods:**
+   - Abstract class can contain both static and non-static methods.
+   - Static class can contain only static methods.
+
+### Use Cases of Static Class
+
+1. Provide utilities.
+2. Extension methods.
+3. Configuration (e.g., database configuration class: db name, port number, connection string, etc.).
+4. Design patterns (e.g., singleton design pattern).
+
+## Extension Methods
+
+- **Definition:** Allows adding additional functionalities to an existing type without modifying, deriving, or recompiling the original class.
+
+### Syntax
+
+1. The class must be a static class.
+2. The method should be a static method.
+3. The first parameter of the extension method must be of the type being extended.
+4. The first parameter should be preceded by the `this` keyword.
+
+## SOLID Principles
+
+- **O:** Open/Closed Principle - Objects/entities should be open for extension but closed for modification.
+
+## LINQ
+
+- **Definition:** Language Integrated Query; built-in extension methods.
+
+## Casing Techniques
+
+1. **Pascal Casing:** The first letter of an identifier must be uppercase, and the remaining letters must be lowercase. Used for naming classes, methods, namespaces, interfaces, delegates, and properties.
+   - Example: `ExtensionMethodDemo.cs`, `ConsoleApp`.
+2. **Camel Casing:** The first word is all lowercase, and subsequent words follow Pascal casing. Used for naming variables, objects, etc.
+   - Example: `camelCaseExample`.

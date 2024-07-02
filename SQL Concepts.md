@@ -309,9 +309,106 @@ WHERE country = 'DE';
 
 #### Differences
 
-1. Union will remove duplicate values but union all will not
-2. If you use union, the records from the first column will be sorted ascendingly automatically.
-3. Union can not be used in recursive cte but union all can.
+1. **`UNION`** will remove duplicate values but **`UNION ALL`** will not
+2. If you use **`UNION`**, the records from the first column will be sorted ascendingly automatically.
+3. **`UNION`** can not be used in recursive CTE but **`UNION ALL`** can.
+
+
+### Window Function
+
+Window function operated on a set of rows and returns a single aggregated value for each and every row by adding an extra column.
+
+#### RANK()
+
+Give a rank based on a certain order, when there is a tie, there will be a value gap
+
+```sql
+SELECT
+	ProductId,
+	ProductName,
+	UnitPrice,
+	RANK() OVER(ORDER BY UnitPrice DESC) RNK
+FROM Products;
+```
+
+Product with the 2nd highest price
+```sql
+SELECT
+	dt.ProductId,
+	dt.ProductName,
+	dt.UnitPrice,
+	dt.RNk
+FROM (
+	SELECT 
+		ProductId,
+		ProductName,
+		UnitPrice,
+		RANK() OVER(ORDER BY UnitPrice DESC) RNK
+	FROM Products
+) dt
+WHERE dt.RNk = 2
+```
+
+#### DENSE_RANK()
+
+If you do not want the value gap, use `DENSE_RANK()`
+```sql
+SELECT
+	ProductId,
+	ProductName,
+	UnitPrice,
+	RANK() OVER(ORDER BY UnitPrice DESC) RNK,
+	DENSE_RANK() OVER(ORDER BY UnitPrice DESC) DENSE_RANK
+FROM Products;
+```
+
+#### ROW_NUMBER()
+
+It will return the ranking of the sorted record starting from 1
+```sql
+SELECT
+	ProductId,
+	ProductName,
+	UnitPrice,
+	RANK() OVER(ORDER BY UnitPrice DESC) RNK,
+	DENSE_RANK() OVER(ORDER BY UnitPrice DESC) DENSE_RANK,
+	ROW_NUMBER() OVER(ORDER BY UnitPrice DESC) RowNum
+FROM Products;
+```
+
+#### PARTITION BY
+
+It divides the result set into partitions and perfrom calculations on each subset. it is always used in conjuction with the window function
+  
+List customers from every country with the ranking for number of orders
+```sql
+SELECT
+	c.ContactName,
+	c.Country,
+	COUNT(O.OrderId) AS NumofOrders,
+	RANK() OVER (
+		PARTITION BY c.Country
+		ORDER BY COUNT(O.OrderId) DESC
+	) RNK
+FROM Customers c
+	JOIN Orders o On c.CustomerId = o.CustomerId
+GROUP BY c.ContactName, c.Country;
+```
+
+find top 3 customers from every country with maximum orders
+
+  
+
+SELECT dt.ContactName, dt.Country, dt.NumOfOrders, dt.RNK
+
+FROM (SELECT c.ContactName, c.Country, COUNT(O.OrderId) AS NumofOrders, RANK() OVER(PARTITION BY c.Country ORDER BY COUNT(O.OrderId) DESC) RNK
+
+FROM Customers c JOIN Orders o On c.CustomerId = o.CustomerId
+
+GROUP BY c.ContactName, c.Country) dt
+
+WHERE dt.RNK <=3
+
 
 ### Managing SQL constraints![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
 

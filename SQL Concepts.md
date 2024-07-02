@@ -773,6 +773,123 @@ SELECT * FROM tempdb.sys.tables;
 3. sizes: 100 rows> temp tables; 100 rows< table variables
 4. temp table can not be used in sp, udf but table variables can be used in sp, udf.
 
+## Stored Procedure
+
+It is a prepared sql query that we can save in our database and reuse it whenever we want to.
+
+Advantages of sp: sp can be used to prevent sql injection because it can take parameters.
+
+```sql
+CREATE PROC spHello
+AS
+BEGIN
+PRINT 'Hello Anonymous Block'
+END
+```
+
+Execution
+```sql
+EXEC spHello
+```
+
+### Input (default)
+
+```sql
+CREATE PROC spAddNumbers
+@a int,
+@b int
+AS
+PRINT @a + @b
+
+EXEC spAddNumbers 10, 20
+```
+
+### Output
+
+```sql
+CREATE PROC spGetName
+@id int,
+@EName varchar(20) OUT
+AS
+BEGIN
+SELECT @EName = EName
+FROM Employee
+WHERE Id = @id
+END
+
+BEGIN
+DECLARE @en VARCHAR(20)
+EXEC spGetName 2, @en OUT
+PRINT @en
+END
+```
+
+sp can also return tables
+```sql
+CREATE PROC spGetAllEmp
+AS
+BEGIN
+SELECT *
+FROM Employee
+END
+
+EXEC spGetAllEmp
+```
+
+### User Defined Function (UDF)
+
+```sql
+CREATE FUNCTION GetTotalRevenue(
+	@price money,
+	@discount real,
+	@quantity int
+)
+RETURNS money
+AS
+BEGIN
+DECLARE @revenue money
+SET @revenue = @price * (1 - @discount) * @quantity
+RETURN @revenue
+END
+```
+
+Usage
+```sql
+SELECT
+	UnitPrice,
+	Quantity,
+	Discount,
+	dbo.GetTotalRevenue(UnitPrice, Discount, Quantity) AS Revenue
+FROM [order details]
+```
+
+Can returns table
+```sql
+CREATE FUNCTION Expensive_Product(@threshold money)
+RETURNS TABLE
+AS
+RETURN SELECT *
+FROM PRODUCTS
+WHERE UnitPrice > @threshold
+```
+
+```sql
+SELECT * FROM dbo.ExpensiveProduct(10)
+```
+
+### sp vs. udf
+
+1. Usuage: use sp for DML statements and udf for calculations
+2. How to call: exec sp, udf are used in sql statements
+3. input/output: sp may or may not have input or output params but for udf, it may or may not have input params but it must have output
+4. you can use sp to call a udf, but you can not use udf to call sp.
+
+## Pagination
+
+OFFSET: skip
+
+--FETCH NEXT x ROWS: Select
+
 ## Transactions in SQL
 
 ### BEGIN TRANSACTION: Start a New Transaction

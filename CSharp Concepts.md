@@ -192,6 +192,20 @@ This structured markdown format provides a clear overview of the C# types and co
 3. The first parameter of the extension method must be of the type being extended.
 4. The first parameter should be preceded by the `this` keyword.
 
+```csharp
+namespace ExtensionMethods
+{
+    public static class MyExtensions
+    {
+        public static int WordCount(this string str)
+        {
+            return str.Split(new char[] { ' ', '.', '?' },
+                             StringSplitOptions.RemoveEmptyEntries).Length;
+        }
+    }
+}
+```
+
 ## SOLID Principles
 
 - **O:** Open/Closed Principle - Objects/entities should be open for extension but closed for modification.
@@ -206,3 +220,4 @@ This structured markdown format provides a clear overview of the C# types and co
    - Example: `ExtensionMethodDemo.cs`, `ConsoleApp`.
 2. **Camel Casing:** The first word is all lowercase, and subsequent words follow Pascal casing. Used for naming variables, objects, etc.
    - Example: `camelCaseExample`.
+

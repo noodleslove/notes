@@ -426,3 +426,64 @@ try {
 }
 ```
 
+### LINQ: Language Integrated Query
+LINQ is a SQL-like syntax that helps us query different data sources. It includes various query expressions on the `IEnumerable<T>` interface.
+
+#### Types of LINQ:
+1. **LINQ to Objects**: 
+    - Allows querying in-memory data sources like lists, arrays, or collections.
+    - The return type is `IEnumerable`, the base interface for all collections and interfaces.
+2. **LINQ to Datasets**: 
+    - Allows working with ADO.Net.
+3. **LINQ to SQL**: 
+    - Allows querying SQL Server databases.
+    - The return type is `IQueryable`.
+4. **LINQ to Entities**: 
+    - Allows querying other SQL databases or entity frameworks.
+    - The return type is `IQueryable`.
+
+#### In-Memory vs. Out-of-Memory Data Sources:
+- **In-Memory Data Sources**: `IEnumerable`
+- **Out-of-Memory Data Sources**: `IQueryable`
+
+### Returning a Single Record:
+1. **First**:
+    - Returns the very first record when one or more matching values are found.
+    - Throws an exception if no matching record is found.
+2. **FirstOrDefault**:
+    - Returns the very first record when one or more matching values are found.
+    - Returns a default value (null if not specified) if no matching record is found.
+3. **Single**:
+    - Returns the only matched record.
+    - Throws an exception if no matching record is found or if more than one matching record is found.
+4. **SingleOrDefault**:
+    - Returns the only matched record.
+    - Returns a default value (null if not specified) if no matching record is found.
+    - Throws an exception if more than one matching record is found.
+
+### Quantifier Operators:
+1. **Any()**:
+    - Checks if any elements satisfy the specified condition.
+    - Returns `true` if any elements satisfy the condition; otherwise returns `false`.
+2. **All()**:
+    - Checks if all elements satisfy the specified condition.
+    - Returns `true` if all elements satisfy the condition; otherwise returns `false`.
+
+### Execution Types:
+- **Deferred Execution**: LINQ queries are not executed until the query is iterated over.
+- **Immediate Execution**: Methods like `ToList()` and `ToArray()` force immediate execution of a query.
+
+### Joins:
+1. **Inner Join**:
+    ```csharp
+    var result = from c in Customers 
+                 join o in Orders on c.CustomerID equals o.CustomerID
+                 select new { c.CustomerID, c.ContactName, o.OrderDate };
+    ```
+2. **Left Join**:
+    ```csharp
+    var result = from c in Customers 
+                 join o in Orders on c.CustomerID equals o.CustomerID into customerOrders
+                 from co in customerOrders.DefaultIfEmpty()
+                 select new { c.CustomerID, c.ContactName, co?.OrderDate };
+    ```

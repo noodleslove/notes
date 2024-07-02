@@ -323,7 +323,42 @@ ALTER TABLE subscriptions
 ALTER COLUMN newsletter SET NOT NULL;
 ```
 
+#### PRIMARY KEY constraint
+
+```sql
+CREATE TABLE projects (
+    project_id INT PRIMARY KEY,
+    project_name VARCHAR(255),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL
+);
+```
+
+```sql
+CREATE TABLE projects (
+    project_id INT,
+    project_name VARCHAR(255),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    CONSTRAINT pk_id PRIMARY KEY (project_id)
+);
+```
+
+Adding the primary key with ALTER TABLE statement.
+```sql
+ALTER TABLE project_milestones
+ADD CONSTRAINT pk_milestone_id PRIMARY KEY (milestone_id);
+```
+
+You can skip the `CONSTRAINT` clause as follows:
+```sql
+ALTER TABLE project_milestones
+ADD PRIMARY KEY (milestone_id);
+```
+
 #### FOREIGN KEY constraint
+
+A foreign key is a column or a group of columns that enforces a link between the data in two tables.
 
 ```sql
 CREATE TABLE projects (
@@ -341,11 +376,24 @@ CREATE TABLE project_milestones (
 );
 ```
 
+You can assign a name to a FOREIGN KEY constraint as follows:
+```sql
+CREATE TABLE project_milestones (
+    milestone_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    milestone_name VARCHAR(100),
+    CONSTRAINT fk_project FOREIGN KEY (project_id)
+        REFERENCES projects (project_id)
+);
+```
+
+To add a FOREIGN KEY constraint to existing table, you use the [ALTER TABLE](https://www.sqltutorial.org/sql-alter-table/) statement.
 ```sql
 ALTER TABLE table_1
 ADD CONSTRAINT fk_name FOREIGN KEY (fk_key_column)
    REFERENCES table_2(pk_key_column)
 ```
+
 ### Inserting data![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
 
 #### [INSERT INTO … VALUES](https://www.cockroachlabs.com/docs/stable/insert)
@@ -476,3 +524,26 @@ Delete a view
 DROP VIEW view_name;
 ```
 
+## Transactions in SQL
+
+### BEGIN TRANSACTION: Start a New Transaction
+
+```sql
+BEGIN TRANSACTION;
+```
+
+This statement starts a new [transaction](https://www.geeksforgeeks.org/sql-transactions/).
+
+### COMMIT: Save Changes Made During the Current Transaction
+
+```sql
+COMMIT;
+```
+
+This statement saves all changes made during the current transaction.
+
+### ROLLBACK: Undo Changes Made During the Current Transaction
+
+```sql
+ROLLBACK;
+```

@@ -20,7 +20,9 @@ DROP DATABASE bank;
 
 Show all databases in your cluster.
 
-```SHOW DATABASES;`**``
+```sql
+SHOW DATABASES;
+```
 
 ### ALIASES
 
@@ -321,6 +323,29 @@ ALTER TABLE subscriptions
 ALTER COLUMN newsletter SET NOT NULL;
 ```
 
+#### FOREIGN KEY constraint
+
+```sql
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(255),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL
+);
+
+CREATE TABLE project_milestones (
+    milestone_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    milestone_name VARCHAR(100),
+    FOREIGN KEY (project_id) REFERENCES projects (project_id)
+);
+```
+
+```sql
+ALTER TABLE table_1
+ADD CONSTRAINT fk_name FOREIGN KEY (fk_key_column)
+   REFERENCES table_2(pk_key_column)
+```
 ### Inserting data![Copy Icon](https://www.cockroachlabs.com/images/icons/copy-icon.svg)
 
 #### [INSERT INTO … VALUES](https://www.cockroachlabs.com/docs/stable/insert)
@@ -411,3 +436,43 @@ Remove an index.
 ```sql
 DROP INDEX users_name_idx;
 ```
+
+## Managing Views
+
+Create a new view that consists  of c1 and c2
+
+```sql
+CREATE VIEW v(c1,c2) AS
+SELECT c1, c2 FROM t;
+```
+
+Create a new view with check option
+
+```sql
+CREATE VIEW v(c1,c2) AS
+SELECT c1, c2 FROM t;
+WITH [CASCADED | LOCAL] CHECK OPTION;
+```
+
+Create a recursive view
+
+```sql
+CREATE RECURSIVE VIEW v AS
+select-statement -- anchor part
+UNION [ALL]
+select-statement; -- recursive part
+```
+
+Create a temporary view
+
+```sql
+CREATE TEMPORARY VIEW v AS
+SELECT c1, c2 FROM t;
+```
+
+Delete a view
+
+```sql
+DROP VIEW view_name;
+```
+

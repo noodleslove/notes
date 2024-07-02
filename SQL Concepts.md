@@ -693,12 +693,85 @@ DROP VIEW view_name;
 
 ## Temp Table
 
- special type of table to help us store the data temproraily; lifescope is limited to the connection that created the local temp table
+A special type of table to help us store the data temporarily.
 
 ### Local Temp Table
 
+**Lifescope**: is limited to the connection that created the local temp table
 
+```sql
+CREATE TABLE #LocalTemp(
+	Num int
+)
+DECLARE @Variable int = 1
+WHILE(@Variable <= 10)
+BEGIN
+INSERT INTO #LocalTemp(Num) VALUES(@Variable)
+SET @Variable = @Variable +1
+END
+```
 
+```sql
+SELECT * FROM #LocalTemp
+```
+
+All temp tables are stored in `tempdb.sys.tables`
+```sql
+SELECT * FROM tempdb.sys.tables
+```
+
+### Global Temp Table
+
+**Lifescope**: they must persist thereafter until the last Transact-SQL statement that was actively referencing
+
+```sql
+CREATE TABLE ##GlobalTemp(
+	Num int
+)
+DECLARE @Variable2 int = 1
+WHILE(@Variable2 <= 10)
+BEGIN
+INSERT INTO ##GlobalTemp(Num) VALUES(@Variable2)
+SET @Variable2 = @Variable2 +1
+END
+```
+
+```sql
+SELECT * FROM ##GlobalTemp
+```
+
+```sql
+SELECT * FROM tempdb.sys.tables
+```
+
+## Variable
+
+### Table Variable
+
+Type of variable which is of table type; **lifescope** is limited to the batch it got created at
+
+```sql
+DECLARE @WeekDays TABLE(
+	DayNum int,
+	DayAbb varchar(20),
+	WeekName varchar(20)
+);
+
+INSERT INTO @WeekDays VALUES
+(1, 'Mon', 'Monday'),
+(2, 'Tue', 'Tuesday');
+
+SELECT * FROM @WeekDays;
+
+SELECT * FROM tempdb.sys.tables;
+```
+
+### Temp Tables vs. Table Variables
+
+1. Both temp table and table variables are stored under tempdb database.
+2. **Lifescope**: local temp table/global temp table , table variable: batch
+3. sizes: 100 rows> temp tables; 100 rows< table variables
+4. temp table can not be used in sp, udf but table variables can be used in sp, udf.
 
 ## Transactions in SQL
 

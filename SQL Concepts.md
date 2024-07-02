@@ -516,6 +516,13 @@ ALTER TABLE project_milestones
 ADD PRIMARY KEY (milestone_id);
 ```
 
+### primary key vs. unique constraint
+
+1. Unique key can accept one and only null value but primary key can not accept any null value
+2. One table can have multiple unique keys but only one primary key
+3. Primary key will sort the data by default in ascending order but unique key will not.
+4. Primary key will create a clustered index and unique key will create a non clustered index
+
 #### FOREIGN KEY constraint
 
 A foreign key is a column or a group of columns that enforces a link between the data in two tables.
@@ -886,9 +893,29 @@ SELECT * FROM dbo.ExpensiveProduct(10)
 
 ## Pagination
 
-OFFSET: skip
+**`OFFSET`**: skip
 
---FETCH NEXT x ROWS: Select
+**`FETCH NEXT`** x ROWS: Select
+
+```sql
+SELECT CustomerId, ContactName, City
+FROM Customers
+ORDER BY CustomerId
+OFFSET 92 ROWS;
+```
+
+```sql
+SELECT CustomerId, ContactName, City
+FROM Customers
+ORDER BY CustomerId
+OFFSET 10 ROWS
+FETCH NEXT 10 ROWS ONLY;
+```
+
+### TOP vs offset, fetch next
+
+1. `TOP` can be used with/without `ORDER BY` but `OFFSET` and `FETCH NEXT` has to be used with `ORDER BY`
+2. `TOP` can be used to fetch top several rows but `OFFSET` and `FETCH NEXT` can be used to fetch several rows in the middle as well.
 
 ## Transactions in SQL
 
@@ -921,10 +948,10 @@ There 3 modes of transaction:
 
 ## ACID Properties
 
-1. Atomicity: work most be atomic
-2. Consistency: a database is transformed from one consistent state to another consistent state
-3. Isolation: two transactions will be isolated from each other by locking the resource
-4. Durability: once the transaction is completed, the changes that we make to database will be permanent
+1. **Atomicity**: work most be atomic
+2. **Consistency**: a database is transformed from one consistent state to another consistent state
+3. **Isolation**: two transactions will be isolated from each other by locking the resource
+4. **Durability**: once the transaction is completed, the changes that we make to database will be permanent
 
 ## Concurrency Problem
 

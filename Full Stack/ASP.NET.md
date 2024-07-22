@@ -67,10 +67,18 @@ Dependency Injection
 - `appsettings.json` file is used to configure application settings. These settings are typically configuration values that the application needs at runtime, such as connection strings, logging settings, and custom application settings.
 
 3. What is the “Developer Exception Page” in asp.net Core? How can we configure a custom exception
+Developer Exception Page is a middleware component in ASP.NET Core that provides detailed error information during development.
+
+Configure a Custom Exception Page:
+
+1. **Add Exception Handling Middleware**: Use the `UseExceptionHandler` middleware to catch exceptions and direct them to a custom error handling route.
+2. **Create an Error Controller and View**: Create a controller and a view to display a user-friendly error message.
+3. **Configure the Custom Error Page**: Set up the route for the error handling in the `UseExceptionHandler` middleware.
 
 handling page in asp.net core?
 
 8. How to configure the logging framework in asp.net core? What is a third party logging framework that is
+
 
 supported by asp.net core?
 

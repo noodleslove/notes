@@ -36,6 +36,18 @@ middleware(s) with asp.net Core?
 
 5. What is Dependency Injection and what are different scopes in asp.net core
 
+Dependency Injection (DI) is a design pattern used to implement Inversion of Control (IoC) between classes and their dependencies.
+
+1. Transient
+- **Lifetime**: Created each time they are requested.
+- **Use Case**: Best suited for lightweight, stateless services.
+2. Scoped
+- **Lifetime**: Created once per request (HTTP request in web applications).
+- **Use Case**: Best suited for services that maintain state within a single request but not across multiple requests.
+3. Singleton
+- **Lifetime**: Created once and shared throughout the application's lifetime.
+- **Use Case**: Best suited for services that maintain state that needs to be shared across the entire application.
+
 Dependency Injection
 
 ● AddTransient

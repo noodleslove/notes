@@ -51,14 +51,22 @@ Dependency Injection (DI) is a design pattern used to implement Inversion of Con
 Dependency Injection
 
 ● AddTransient
+- **Lifetime**: Created each time they are requested.
+- **Use Case**: Best suited for lightweight, stateless services.
 
 ● AddScoped
+- **Lifetime**: Created once per request (HTTP request in web applications).
+- **Use Case**: Best suited for services that maintain state within a single request but not across multiple requests.
 
 ● AddSingleton
+**Lifetime**: Created once and shared throughout the application's lifetime.
+- **Use Case**: Best suited for services that maintain state that needs to be shared across the entire application.
 
-6. What is the use of the “launchsettings.json” file and “appsettings.json” file?
+1. What is the use of the “launchsettings.json” file and “appsettings.json” file?
+- `launchsettings.json` file is used to configure various settings related to the launch of an ASP.NET Core application.
+- `appsettings.json` file is used to configure application settings. These settings are typically configuration values that the application needs at runtime, such as connection strings, logging settings, and custom application settings.
 
-7. What is the “Developer Exception Page” in asp.net Core? How can we configure a custom exception
+3. What is the “Developer Exception Page” in asp.net Core? How can we configure a custom exception
 
 handling page in asp.net core?
 

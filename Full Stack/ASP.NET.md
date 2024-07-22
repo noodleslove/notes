@@ -98,6 +98,17 @@ Use the `ConfigureServices` or `Program.cs` to register filters globally, ensuri
 
 12. What is your understanding of Caching? How did you use Caching in your application? In-memory or
 
+- **In-Memory Caching**:
+
+    - **Description**: Stores data in the memory of the server process.
+    - **Use Case**: Suitable for data that is frequently accessed and does not need to be shared across different instances of an application.
+    - **Implementation**: Uses the `IMemoryCache` interface provided by ASP.NET Core.
+- **Distributed Caching**:
+
+    - **Description**: Stores data in a centralized cache that can be shared across multiple instances of an application.
+    - **Use Case**: Useful for applications deployed across multiple servers or instances, where you need to share cached data between them.
+    - **Implementation**: Can use distributed cache providers such as Redis or SQL Server.
+
 Distributed caching? Give me some examples where caching is useful.
 
 12. Do you know what is model binding in asp.net core, how is it useful for developers?

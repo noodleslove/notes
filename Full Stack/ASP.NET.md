@@ -83,12 +83,20 @@ handling page in asp.net core?
 supported by asp.net core?
 
 9. What is the use of a filter in the asp.net core application? Explain the filter types available in the asp.net
+Filters in ASP.NET Core provide a way to run code before or after specific stages in the request processing pipeline. They are used to implement cross-cutting concerns like logging, exception handling, authentication, authorization, caching, and more.
+
+- Authorization Filters
+- Resources Filters
+- Action Filters
+- Exception Filters
+- Result Filters
 
 core application?
 
 10. What are some custom Filters you created? How to define a Global filter in asp.net core?
+Use the `ConfigureServices` or `Program.cs` to register filters globally, ensuring they are applied to all actions or controllers.
 
-11. What is your understanding of Caching? How did you use Caching in your application? In-memory or
+12. What is your understanding of Caching? How did you use Caching in your application? In-memory or
 
 Distributed caching? Give me some examples where caching is useful.
 

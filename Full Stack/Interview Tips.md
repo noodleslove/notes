@@ -3,7 +3,18 @@
 
 #### Deployment process
 
+###### Waterfall model
+
+project planning --> system analysis --> system design --> development & unit testing --> QA testing --> UAT --> production
+
+#### Agile methodology
+
+sprint: 3 weeks
+user stories: features from user perspective
+
 feature branch --> qa testing branch --> UAT branch --> production
+
+
 
 #### Git merge vs. git rebase
 

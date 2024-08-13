@@ -1,4 +1,3 @@
-
 ## AlexNet
 - **Overview**: Developed by Alex Krizhevsky, AlexNet is one of the earliest deep learning models that popularized the use of CNNs in image classification.
 - **Key Features**:
@@ -14,4 +13,10 @@
     - Residual blocks to allow gradients to flow through shortcut connections.
 - **Applications**: General image classification, object detection, and feature extraction.
 
-## MobileNet 
+## MobileNet
+- **Overview**: Developed by Google, MobileNet models are designed for mobile and embedded vision applications.
+- **Variants**: MobileNetV1, MobileNetV2, MobileNetV3.
+- **Key Features**:
+    - Lightweight architecture optimized for mobile devices.
+    - Depth-wise separable convolutions.
+- **Applications**: Mobile image classification and embedded vision applications.
